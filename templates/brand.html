@@ -1,0 +1,358 @@
+
+{% extends 'layout.html'%}
+
+{%block head %}
+<title> brand</title>
+{%endblock%}
+<link rel="stylesheet" href="styles.css">
+{%block body%}
+<title>Ecommers Sepatu</title>
+<style>
+
+</style>
+<script>
+  const slider = document.querySelector('.product-slider');
+  const productCards = document.querySelectorAll('.product-card');
+
+  let scrollAmount = 0;
+
+  function scrollRight() {
+    scrollAmount += productCards[0].offsetWidth + 20;
+    if (scrollAmount > slider.scrollWidth - slider.offsetWidth) {
+      scrollAmount = slider.scrollWidth - slider.offsetWidth;
+    }
+    slider.scrollTo({
+      left: scrollAmount,
+      behavior: 'smooth',
+    });
+  }
+
+  function scrollLeft() {
+    scrollAmount -= productCards[0].offsetWidth + 20;
+    if (scrollAmount < 0) {
+      scrollAmount = 0;
+    }
+    slider.scrollTo({
+      left: scrollAmount,
+      behavior: 'smooth',
+    });
+  }
+</script>
+
+</head>
+<body>
+  <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nama = $_POST["nama"];
+    $email = $_POST["email"];
+    $pesan = $_POST["pesan"];
+
+    $to = "info@ecomes-shoes.com";  // Ganti dengan alamat email penerima
+    $subject = "Pesan dari $nama";
+    $message = "Nama: $nama\nEmail: $email\nPesan:\n$pesan";
+
+    $headers = "From: $email";
+
+    if (mail($to, $subject, $message, $headers)) {
+        echo "Pesan Anda telah berhasil dikirim. Terima kasih!";
+    } else {
+        echo "Maaf, terjadi kesalahan saat mengirim pesan.";
+    }
+}
+?>
+<div class="header">
+    <h1>JeffShoes</h1>
+</div>
+
+<div class="nav">
+  <a class="nav-link active" aria-current="page" href="/">Home</a>
+    
+    <a href="#">Contact</a>
+    <a href="#">About</a>
+</div>
+<div class="bg-success p-2 text-white bg-opacity-75">Fashion Shoes</div>
+<div class="products">
+  <div class="product-slider">
+    <div class="product-card">
+      <img src="https://i.pinimg.com/564x/be/06/95/be0695d5538f1c6d3559d900d1da0ade.jpg" alt="shoe">
+      <h2 class="title">{{tb_product[0].1}}</h2>
+      <p class="price">{{tb_product[0].2}}</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe2">
+      <h2 class="title">{{tb_product[1].1}}</h2>
+      <p class="price">{{tb_product[1].2}}</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe3">
+      <h2 class="title">{{tb_product[2].1}}</h2>
+      <p class="price">{{tb_product[2].2}}</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">{{tb_product[3].1}}</h2>
+      <p class="price">{{tb_product[3].2}}</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">{{tb_product[4].1}}</h2>
+      <p class="price">{{tb_product[4].2}}</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+  </div>
+</div>
+
+ <div class="bg-success p-2 text-white bg-opacity-75">Sport Shoes</div>
+ <div class="products">
+  <div class="product-slider">
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe2">
+      <h2 class="title">Shoe 2</h2>
+      <p class="price">$149.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe3">
+      <h2 class="title">Shoe 3</h2>
+      <p class="price">$119.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+  </div>
+</div>
+
+<div class="bg-success p-2 text-white bg-opacity-75">Sneakers Shoes</div>
+ <div class="products">
+  <div class="product-slider">
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe2">
+      <h2 class="title">Shoe 2</h2>
+      <p class="price">$149.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe3">
+      <h2 class="title">Shoe 3</h2>
+      <p class="price">$119.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+  </div>
+</div>
+
+<div class="bg-success p-2 text-white bg-opacity-75">Air Jordan Shoes</div>
+ <div class="products">
+  <div class="product-slider">
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe2">
+      <h2 class="title">Shoe 2</h2>
+      <p class="price">$149.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe3">
+      <h2 class="title">Shoe 3</h2>
+      <p class="price">$119.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Buy</button>
+    </div>
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH4ltK8a2oPzCc8JNIYJXuFr1wLdYBIgFFtw&usqp=CAU" alt="shoe">
+      <h2 class="title">Shoe 1</h2>
+      <p class="price">$99.99</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<div class="custom-background">
+  <h1>Hubungi Kami</h1>
+  <form method="post" action="send_email.php">
+      <label for="nama">Nama:</label>
+      <input type="text" id="nama" name="nama" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name "email" required>
+
+      <label for="pesan">Pesan:</label>
+      <textarea id="pesan" name="pesan" rows="4" required></textarea>
+
+      <input type="submit" value="Kirim Pesan">
+  </form>
+</div>
+
+</body>
+
+{%endblock%}
+
+
+  
